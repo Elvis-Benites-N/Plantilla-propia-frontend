@@ -1,0 +1,15 @@
+{
+    "services": {
+        "apigateway": {
+            "url": "http://localhost:xxxx/context"
+        },
+        "loginQuipu": {
+            "url": "http://localhost:2023",
+            "publicKey": "xxxx"
+        }
+    },
+    "banner": {
+        "mostrar": "true",
+        "nombre": "Desarrollo"
+    }
+}

@@ -1,0 +1,58 @@
+<nz-page-header
+  class="site-page-header"
+  style="flex: 1 1"
+  [nzBackIcon]="breadcrumbs.length > 1 ? '' : null"
+>
+  <!-- BREADCRUMBS -->
+  <nz-breadcrumb
+    nz-page-header-breadcrumb
+    nzSeparator=">"
+    *ngIf="breadcrumbs.length > 1"
+  >
+    <nz-breadcrumb-item *ngFor="let breadcrumb of breadcrumbs">
+      <div *ngIf="breadcrumb.routerLink; then routerLink; else text"></div>
+
+      <ng-template #routerLink>
+        <a [routerLink]="breadcrumb.routerLink">
+          <span
+            nz-icon
+            [nzType]="breadcrumb.icon"
+            *ngIf="breadcrumb.icon"
+          ></span>
+          <span>
+            {{ breadcrumb.label }}
+          </span>
+        </a>
+      </ng-template>
+      <ng-template #text>
+        <span nz-icon [nzType]="breadcrumb.icon" *ngIf="breadcrumb.icon"></span>
+        <span>
+          {{ breadcrumb.label }}
+        </span>
+      </ng-template>
+    </nz-breadcrumb-item>
+  </nz-breadcrumb>
+
+  <!-- TITLE -->
+  <nz-page-header-title style="font-weight: 300; font-size: 24px">{{
+    title
+  }}</nz-page-header-title>
+
+  <!-- EXPORT -->
+  <!-- <nz-page-header-extra *ngIf="mostrarBotonExportar">
+  <button
+    nz-button
+    class="btn-excel"
+    [nzLoading]="contentHandler.exportando"
+    (click)="contentHandler.emitExportar()"
+  >
+    <span nz-icon nzType="file-excel" nzTheme="outline"></span>
+    Exportar Listado
+  </button>
+</nz-page-header-extra> -->
+
+  <!-- DESCRIPTION -->
+  <nz-page-header-content>
+    <p>{{ description }}</p>
+  </nz-page-header-content>
+</nz-page-header>

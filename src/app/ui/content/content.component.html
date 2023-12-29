@@ -1,0 +1,34 @@
+<nz-layout style="width: 100vw; height: 100vh; overflow: hidden">
+  <nz-content>
+    <div #contentScroll id="contenedor">
+      <titulo></titulo>
+
+      <div
+        *ngIf="
+          cargandoRuta;
+          then cargandoRutaTemplate;
+          else rutaCargadaTemplate
+        "
+      ></div>
+
+      <ng-template #cargandoRutaTemplate>
+        <div class="w-100" style="height: 360px; display: flex">
+          <span
+            nz-icon
+            nzType="loading"
+            nzTheme="outline"
+            style="margin: auto; font-size: 60px"
+          ></span>
+        </div>
+      </ng-template>
+
+      <ng-template #rutaCargadaTemplate>
+        <div
+          [@fadeInAnimation]="outlet.isActivated ? outlet.activatedRoute : ''"
+        >
+          <router-outlet #outlet="outlet"></router-outlet>
+        </div>
+      </ng-template>
+    </div>
+  </nz-content>
+</nz-layout>
